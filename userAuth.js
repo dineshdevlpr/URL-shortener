@@ -90,7 +90,7 @@ router.post("/register", async (req, res) => {
           if (isValid) {
             let authToken = jwt.sign({user_id:data._id},process.env.AUTH_KEY)
             res.status(200).json({
-              message: "Successfully Logged In",
+              message: "Successfully Logged In", authToken
             });
           } else {
             res.status(401).json({

@@ -1,5 +1,6 @@
 const jwt = require('jsonwebtoken')
-const { MongoClient, ObjectID } = require('mongodb')
+const { MongoClient } = require("mongodb");
+const  ObjectID = require('mongodb').ObjectId;
 
 const dbUrl = process.env.DB_URL
 
@@ -22,7 +23,7 @@ async function authorize(req,res,next)
            
            
         }else{
-            res.status(401).json({message:"no token"})
+            res.status(401).json({message:"No Token Found"})
         }
 
 }
@@ -31,7 +32,8 @@ async function getById(id){
     try {
         let client = await MongoClient.connect(dbUrl);
         let db = client.db('Url-Shortener');
-        let data = await db.collection("users").findOne({ _id : ObjectID(id) })
+        let data = await db.collection("users").findOne({ _id : ObjectID(id)})
+        console.log(data._id)
         let user_id = data._id;
         console.log(user_id)
         return user_id;
