@@ -75,7 +75,7 @@ router.get('/countbydate', authorize, async(req,res)=>{
 
 // redirect to actual Url
 
-router.get('/:shortUrlId', authorize, async (req, res) => {
+router.get('/:shortUrlId', async (req, res) => {
     try {
         let client = await MongoClient.connect(dbUrl);
         let db = client.db("Url-Shortener");
