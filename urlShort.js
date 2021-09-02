@@ -3,7 +3,7 @@ const { MongoClient, ObjectID } = require("mongodb");
 var validUrl = require('valid-url');
 const shortid = require('shortid');
 require("dotenv").config();
-const urlShort = require("./urlShort")
+const authorize = require("./authorize");
 
 
 const dbUrl = process.env.DB_URL;
