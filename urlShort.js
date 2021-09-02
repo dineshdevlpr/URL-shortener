@@ -15,11 +15,11 @@ router.post('/createurl', authorize, async (req, res) => {
     try {
         let client = await MongoClient.connect(dbUrl);
         let db = client.db("Url-Shortener");
-        let longUrl = req.body.url;
+        let longUrl = req.body.longUrl;
         if (validUrl.isUri(longUrl)) {
 
             let shortUrlId = shortid.generate();
-            let date = await db.collection("urls").insertOne({ longUrl : req.body.url, shortUrlId : shortUrlId , date : new Date().toLocaleDateString()});
+            let date = await db.collection("urls").insertOne({ longUrl : req.body.longUrl, shortUrlId : shortUrlId , date : new Date().toLocaleDateString()});
             res.status("200").json({ message: "Url shortening successfull" })
         } else {
             res.status("401").json({ message: "Invalid URL" })
