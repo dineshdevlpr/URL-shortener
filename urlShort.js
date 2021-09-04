@@ -1,5 +1,6 @@
 const router = require("express").Router();
 const { MongoClient, ObjectID } = require("mongodb");
+const cors = require("cors");
 var validUrl = require('valid-url');
 const shortid = require('shortid');
 require("dotenv").config();
@@ -7,10 +8,11 @@ const authorize = require("./authorize");
 
 
 const dbUrl = process.env.DB_URL;
+app.use(cors());
 
 // create shortid using shortid npm package
 
-router.post('/createurl', async (req, res) => {
+router.post('/createurl', authorize, async (req, res) => {
 
     try {
         let client = await MongoClient.connect(dbUrl);
@@ -33,7 +35,7 @@ router.post('/createurl', async (req, res) => {
 
 // list of data created
 
-router.get('/listurldata', async (req, res) => {
+router.get('/listurldata', authorize, async (req, res) => {
     try {
         let client = await MongoClient.connect(dbUrl);
         let db = client.db("Url-Shortener");
@@ -53,7 +55,7 @@ router.get('/listurldata', async (req, res) => {
 
 // total number of urls created on selected date
 
-router.get('/countbydate', async(req,res)=>{
+router.get('/countbydate', authorize, async(req,res)=>{
     try {
         let client = await MongoClient.connect(dbUrl);
         let db = client.db('Url-Shortener');
