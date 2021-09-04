@@ -10,7 +10,7 @@ const dbUrl = process.env.DB_URL;
 
 // create shortid using shortid npm package
 
-router.post('/createurl', authorize, async (req, res) => {
+router.post('/createurl', async (req, res) => {
 
     try {
         let client = await MongoClient.connect(dbUrl);
@@ -33,7 +33,7 @@ router.post('/createurl', authorize, async (req, res) => {
 
 // list of data created
 
-router.get('/listurldata', authorize, async (req, res) => {
+router.get('/listurldata', async (req, res) => {
     try {
         let client = await MongoClient.connect(dbUrl);
         let db = client.db("Url-Shortener");
@@ -53,7 +53,7 @@ router.get('/listurldata', authorize, async (req, res) => {
 
 // total number of urls created on selected date
 
-router.get('/countbydate', authorize, async(req,res)=>{
+router.get('/countbydate', async(req,res)=>{
     try {
         let client = await MongoClient.connect(dbUrl);
         let db = client.db('Url-Shortener');
