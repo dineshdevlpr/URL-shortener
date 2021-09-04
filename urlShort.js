@@ -1,3 +1,4 @@
+const express = require('express')
 const router = require("express").Router();
 const { MongoClient, ObjectID } = require("mongodb");
 const cors = require("cors");
@@ -8,6 +9,7 @@ const authorize = require("./authorize");
 
 
 const dbUrl = process.env.DB_URL;
+const app = express()
 app.use(cors());
 
 // create shortid using shortid npm package
