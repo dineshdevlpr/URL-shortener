@@ -39,7 +39,7 @@ router.post("/register", async (req, res) => {
                 subject: "Account Activation link",
                 html: `<div>
                     <h3>Thanks for Registering.. Click on the below link to activate your account :)</h3>
-                    <a href="${feUrl+"auth/activation/"+regToken}">Activate Account</a>
+                    <a href="${feUrl+"activation/"+regToken}">Activate Account</a>
                   </div>`,
               });
               console.log(mailDetails);
@@ -151,7 +151,7 @@ router.post("/register", async (req, res) => {
           subject: "Password Reset",
           html: `<div>
                     <h3>If You have requested for Password Reset, Click the following link to reset your password.If not requested, then just ignore this mail</h3>
-                    <a href="${feUrl+"auth/reset/"+randomString}">RESET PASSWORD</a>
+                    <a href="${feUrl+"reset/"+randomString}">RESET PASSWORD</a>
                   </div>`,
         })   
         console.log(mailDetails)
