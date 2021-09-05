@@ -12,6 +12,7 @@ const dbUrl = process.env.DB_URL;
 const app = express()
 app.use(cors({
     origin : "*",
+    Access-Control-Expose-Headers: *, Authorization,
     credentials : true
 }));
 
