@@ -12,7 +12,10 @@ const port = process.env.PORT || 4000;
 const dbUrl = process.env.DB_URL;
 
 app.use(express.json())
-app.use(cors());
+app.use(cors({
+    origin : "*",
+    credentials : true
+}));
 app.use("/auth", router)
 app.use("/urlshort", urlShort)
 
