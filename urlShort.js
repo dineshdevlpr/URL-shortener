@@ -10,7 +10,10 @@ const authorize = require("./authorize");
 
 const dbUrl = process.env.DB_URL;
 const app = express()
-app.use(cors());
+app.use(cors({
+    origin : "*",
+    credentials : true
+}));
 
 // create shortid using shortid npm package
 
